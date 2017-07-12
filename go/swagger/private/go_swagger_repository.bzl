@@ -5,6 +5,10 @@ def _go_swagger_repository_impl(ctx):
     if result.return_code:
         fail("failed to make GOPATH: %s" % (result.stderr,))
 
+    result = env_execute(ctx, ["mkdir", "-p", fake_repo + "/models"])
+    if result.return_code:
+        fail("failed to make model dir: %s" % (result.stderr,))
+
     swagger = ctx.path(ctx.attr._swagger)
     cmd = "cd src; %s generate server -f %s -t %s --exclude-main" % (swagger, ctx.path(ctx.attr.src), ctx.attr.importpath)
     cmds = ["bash", "-c", cmd]

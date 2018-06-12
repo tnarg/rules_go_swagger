@@ -73,8 +73,7 @@ go_swagger_repository = repository_rule(
             cfg = "host",
         ),
         "_gazelle": attr.label(
-            default = Label("@io_bazel_rules_go_repository_tools//:bin/gazelle"),
-            allow_files = True,
+            default = Label("@bazel_gazelle_go_repository_tools//:bin/gazelle"),
             single_file = True,
             executable = True,
             cfg = "host",

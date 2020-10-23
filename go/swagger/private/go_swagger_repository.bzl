@@ -49,7 +49,7 @@ def _go_swagger_repository_impl(ctx):
           fake_repo, result.stderr))
 
     gazelle = ctx.path(ctx.attr._gazelle)
-    cmds = [gazelle, '--go_prefix', ctx.attr.importpath, '--mode', 'fix',
+    cmds = [gazelle, '--go_prefix', ctx.attr.importpath, '--mode', 'fix', "--go_naming_convention", "import_alias",
             '--repo_root', ctx.path('')]
     cmds += [ctx.path('')]
     result = env_execute(ctx, cmds)
